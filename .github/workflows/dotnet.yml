@@ -49,21 +49,28 @@ jobs:
     - name: Build for Release
       run: dotnet build --configuration Release --no-restore
       working-directory: ./src
+      if: github.event_name != 'pull_request'
     - name: Deploy Weikio.PluginFramework.Abstractions to GitHub Nuget
       run: dotnet nuget push "*.nupkg" --source "github"
       working-directory: ./src/Weikio.PluginFramework.Abstractions/bin/Release
+      if: github.event_name != 'pull_request'
     - name: Deploy Weikio.PluginFramework to GitHub Nuget
       run: dotnet nuget push "*.nupkg" --source "github"
       working-directory: ./src/Weikio.PluginFramework/bin/Release
+      if: github.event_name != 'pull_request'
     - name: Deploy Weikio.PluginFramework.Configuration to GitHub Nuget
       run: dotnet nuget push "*.nupkg" --source "github"
       working-directory: ./src/Weikio.PluginFramework.Configuration/bin/Release
+      if: github.event_name != 'pull_request'
     - name: Deploy Weikio.PluginFramework.AspNetCore to GitHub Nuget
       run: dotnet nuget push "*.nupkg" --source "github"
       working-directory: ./src/Weikio.PluginFramework.AspNetCore/bin/Release
+      if: github.event_name != 'pull_request'
     - name: Deploy Weikio.PluginFramework.Catalogs.NuGet to GitHub Nuget
       run: dotnet nuget push "*.nupkg" --source "github"
       working-directory: ./src/Weikio.PluginFramework.Catalogs.NuGete/bin/Release
+      if: github.event_name != 'pull_request'
     - name: Deploy Weikio.PluginFramework.Catalogs.Roslyn to GitHub Nuget
       run: dotnet nuget push "*.nupkg" --source "github"
       working-directory: ./src/Weikio.PluginFramework.Catalogs.Roslyn/bin/Release
+      if: github.event_name != 'pull_request'
